@@ -99,7 +99,6 @@ class Player {
         ctx.fill();
         ctx.stroke();
 
-
     }   
 }
 

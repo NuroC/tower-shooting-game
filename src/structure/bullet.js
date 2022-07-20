@@ -1,5 +1,5 @@
 class bullet {
-    constructor(x, y, direction, damage, type) {
+    constructor(x, y, direction, damage, type, owner) {
         this.x = x;
         this.y = y;
         this.direction = direction;
@@ -7,6 +7,7 @@ class bullet {
         this.type = type;
         this.radius = 5;
         this.speed = 3;
+        this.owner = owner;
     }
     update() {
         let speed = this.speed
