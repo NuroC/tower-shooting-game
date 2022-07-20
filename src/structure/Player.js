@@ -8,6 +8,7 @@ class Player {
         this.speedX = 0
         this.speedY = 0
         this.radius = 25
+        this.points = 0;
     }
     draw(ctx) {
         ctx.beginPath();
@@ -35,15 +36,19 @@ class Player {
                             let cc = this.circlecircle(bullet.x, bullet.y, bullet.radius, this.x, this.y, this.radius + 5)
                             if (cc) {
                                 enemy.bullets.splice(enemy.bullets.indexOf(bullet), 1)
+                                this.points -= 1
+                                this.updatePoints(this.points)
                             }
                         })
                     }
                     if (this.bullets) {
                         this.bullets.forEach(bullet => {
-                            let cc = this.circlecircle(bullet.x, bullet.y, bullet.radius, enemy.x, enemy.y, 10)
+                            let cc = this.circlecircle(bullet.x, bullet.y, bullet.radius, enemy.x, enemy.y, enemy.radius + 4)
                             if (cc) {
                                 this.bullets.splice(this.bullets.indexOf(bullet), 1)
                                 this.enemies.splice(this.enemies.indexOf(enemy), 1)
+                                this.points += 1
+                                this.updatePoints(this.points)
                             }
                         })
                     }
@@ -55,6 +60,10 @@ class Player {
         let direction = Math.atan2(x - this.y, y - this.x);
         let bullet = new Bullet(this.x, this.y, direction, 1, "player");
         this.bullets.push(bullet);
+    }
+    updatePoints(points) {
+        let element = document.getElementById("score")
+        element.innerHTML = points + " points"
     }
     circlecircle(x1, y1, r1, x2, y2, r2) {
         var x = x1 - x2

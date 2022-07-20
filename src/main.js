@@ -6,11 +6,12 @@ const CircleCircle = require("./math/circlecircle");
 const canvas = new Canvas("canvas", 1000, 1000);
 const ctx = canvas.getContext();
 
+let maxTanks = 10
 
 let self = new Player(500, 500);
-// generate 20 enemies with random positions
+
 let enemies = [];
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < maxTanks; i++) {
     let x = Math.floor(Math.random() * 1000);
     let y = Math.floor(Math.random() * 1000);
     let enemy = new Enemy(x, y);
@@ -27,7 +28,6 @@ var mouse = {}
 
 document.addEventListener("click", function (e) {
     self.shoot(mouse.y, mouse.x);
-    console.log(mouse.x, mouse.y);
 });
 
 document.addEventListener("mousemove", function (e) {
@@ -87,7 +87,7 @@ class main {
             ctx.lineTo(canvas.getWidth(), i);
             ctx.stroke();
         }
-        if (enemies.length < 20) {
+        if (enemies.length < maxTanks) {
             let x = Math.floor(Math.random() * 1000);
             let y = Math.floor(Math.random() * 1000);
             let newenemy = new Enemy(x, y)
