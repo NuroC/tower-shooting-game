@@ -9,6 +9,7 @@ class Player {
         this.speedY = 0
         this.radius = 25
         this.points = 0;
+        this.texts = []
     }
     draw(ctx) {
         ctx.beginPath();
@@ -20,6 +21,10 @@ class Player {
         ctx.fillStyle = 'rgb(0,178,225)'
         ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
         ctx.fill();
+
+        this.texts.forEach(text => {
+            text.draw(ctx);
+        })
     }
     update(ctx) {
         this.updateBullets(ctx);
@@ -48,6 +53,7 @@ class Player {
                                 this.bullets.splice(this.bullets.indexOf(bullet), 1)
                                 this.enemies.splice(this.enemies.indexOf(enemy), 1)
                                 this.points += 1
+                                this.addText(enemy.x, enemy.y, -1, 100, "+1 point")
                                 this.updatePoints(this.points)
                             }
                         })
@@ -98,8 +104,44 @@ class Player {
         ctx.lineTo(this.x + 50 * Math.cos(direction), this.y + 50 * Math.sin(direction));
         ctx.fill();
         ctx.stroke();
+    }
+    generateText(x, y, speed, life, text) {
+        let _this = this
+        let textObject = {
+            x: x,
+            y: y,
+            speed: speed,
+            life: life,
+            text: text,
+            draw: function (ctx) {
+                ctx.beginPath();
+                ctx.fillStyle = 'rgb(0,178,225)'
+                ctx.font = "20px Arial";
+                ctx.fillText(this.text, this.x, this.y);
+                ctx.fill();
+                this.update(
 
-    }   
+                )
+            },
+            update: function () {
+                this.y += this.speed
+                this.life -= 1
+                if (this.life <= 0) {
+                    _this.texts.splice(_this.texts.indexOf(this), 1)
+                }
+            }
+        }
+        return textObject
+    }
+    updateText(text) {
+        this.texts.push(text)
+    }
+    addText(x, y, speed, life, text) {
+        let textobj = this.generateText(x, y, speed, life, text)
+        this.texts.push(textobj)
+    }
+
+    
 }
 
 module.exports = Player;
