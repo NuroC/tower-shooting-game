@@ -66,6 +66,11 @@ class Player {
                                 this.updatePoints(this.points)
                             }
                         })
+                        for (let i = 0; i < this.bullets.length; i++) {
+                            if (this.bullets[i].x > this.getCanvasInfo().width || this.bullets[i].x < 0 || this.bullets[i].y > this.getCanvasInfo().height || this.bullets[i].y < 0) {
+                                this.bullets.splice(i, 1);
+                            }
+                        }
                     }
                 }
             })

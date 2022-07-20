@@ -5,6 +5,8 @@ const CircleCircle = require("./math/circlecircle");
 
 const canvas = new Canvas("canvas", window.innerHeight, window.innerWidth);
 const ctx = canvas.getContext();
+
+
 canvas.resize(window.innerWidth - 100, window.innerHeight - 100);
 let maxTanks = 13
 
@@ -13,6 +15,7 @@ window.addEventListener("resize", () => {
     canvas.resize(window.innerWidth - 50, window.innerHeight - 50);
 })
 let enemies = [];
+window.enemies = []
 for (let i = 0; i < maxTanks; i++) {
     let x = Math.floor(Math.random() * canvas.getWidth());
     let y = Math.floor(Math.random() * canvas.getHeight());
@@ -29,7 +32,7 @@ for (let i = 0; i < maxTanks; i++) {
 var mouse = {}
 
 document.addEventListener("click", function (e) {
-    self.shoot(mouse.y, mouse.x);
+    self.shoot(e.clientY, e.clientX);
 });
 
 document.addEventListener("mousemove", function (e) {
@@ -103,6 +106,7 @@ class main {
             enemy.update(ctx, self);
         })
         self.updateEnemy(enemies)
+        window.enemies = enemies
 
         window.requestAnimationFrame(main.init);
     }

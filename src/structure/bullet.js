@@ -6,7 +6,7 @@ class bullet {
         this.damage = damage;
         this.type = type;
         this.radius = 5;
-        this.speed = 3;
+        this.speed = 2;
         this.owner = owner;
     }
     update() {

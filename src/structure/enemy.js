@@ -82,7 +82,6 @@ class Enemy {
                     let cc = this.circlecircle(bullet.x, bullet.y, bullet.radius, this.x, this.y, this.radius + 4)
                     if (cc) {
                         if (bullet.owner !== this.id) {
-                            console.log("hit")
                             enemy.bullets.splice(i, 1);
                         }
                     }
