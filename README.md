@@ -3,7 +3,6 @@ a game where several enemies shoot at you, so you have to destroy them first
 
 todo:
 - [x] point system
-- [ ] upgrade system
 - [ ] fix enemies bullets going through other enemies
 - [ ] other stuff
 - [ ] text animations on several events, such as point loss or point add
