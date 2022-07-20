@@ -6,3 +6,5 @@ todo:
 - upgrade system
 - fix enemies bullets going through other enemies
 - other stuff
+
+![image](https://media.discordapp.net/attachments/920372443544162365/999305101653049474/unknown.png?width=929&height=936)
