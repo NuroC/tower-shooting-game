@@ -1,6 +1,8 @@
 # tower-shooting-game
 a game where several enemies shoot at you, so you have to destroy them first
 
+yes the game style is inspired from diep io
+
 todo:
 - [x] point system
 - [x] fix enemies bullets going through other enemies
