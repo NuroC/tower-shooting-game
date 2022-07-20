@@ -39,11 +39,17 @@ class Enemy {
         this.bullets.push(bullet);
         this.handleBulletCollision()
     }
+    getCanvasInfo() {
+        let canvas = document.getElementById("canvas");
+        let height = canvas.height;
+        let width = canvas.width;
+        return {width, height}
+    }
     updateBullets(ctx) {
         this.handleBulletCollision()
         for (let i = 0; i < this.bullets.length; i++) {
             this.bullets[i].draw(ctx);
-            if (this.bullets[i].x > 1000 || this.bullets[i].x < 0 || this.bullets[i].y > 1000 || this.bullets[i].y < 0) {
+            if (this.bullets[i].x > this.getCanvasInfo().width || this.bullets[i].x < 0 || this.bullets[i].y > this.getCanvasInfo().height || this.bullets[i].y < 0) {
                 this.bullets.splice(i, 1);
             }
         }

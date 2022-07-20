@@ -26,6 +26,15 @@ class Player {
             text.draw(ctx);
         })
     }
+    getCanvasInfo() {
+        let canvas = document.getElementById("canvas");
+        let width = canvas.width;
+        let height = canvas.height;
+        return {
+            width,
+            height
+        }
+    }
     update(ctx) {
         this.updateBullets(ctx);
         this.x += this.speedX

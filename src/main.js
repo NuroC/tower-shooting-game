@@ -3,17 +3,19 @@ const Player = require("./structure/player");
 const Enemy = require("./structure/enemy");
 const CircleCircle = require("./math/circlecircle");
 
-const canvas = new Canvas("canvas", 1000, 1000);
+const canvas = new Canvas("canvas", window.innerHeight, window.innerWidth);
 const ctx = canvas.getContext();
-
-let maxTanks = 10
+canvas.resize(window.innerWidth - 100, window.innerHeight - 100);
+let maxTanks = 13
 
 let self = new Player(500, 500);
-
+window.addEventListener("resize", () => {
+    canvas.resize(window.innerWidth - 50, window.innerHeight - 50);
+})
 let enemies = [];
 for (let i = 0; i < maxTanks; i++) {
-    let x = Math.floor(Math.random() * 1000);
-    let y = Math.floor(Math.random() * 1000);
+    let x = Math.floor(Math.random() * canvas.getWidth());
+    let y = Math.floor(Math.random() * canvas.getHeight());
     let enemy = new Enemy(x, y);
     // check all current enemies to see if they are too close to the new enemy
     for (let j = 0; j < enemies.length; j++) {
@@ -88,15 +90,15 @@ class main {
             ctx.stroke();
         }
         if (enemies.length < maxTanks) {
-            let x = Math.floor(Math.random() * 1000);
-            let y = Math.floor(Math.random() * 1000);
+            let x = Math.floor(Math.random() * canvas.getWidth());
+            let y = Math.floor(Math.random() * canvas.getHeight());
             let newenemy = new Enemy(x, y)
-           enemies.push(newenemy)
+            enemies.push(newenemy)
         }
         ctx.strokeRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
         self.update(ctx);
-        
+
         enemies.forEach(enemy => {
             enemy.update(ctx, self);
         })
