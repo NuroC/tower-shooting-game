@@ -7,3 +7,4 @@ todo:
 - [ ] text animations on several events, such as point loss or point add
 
 ![image](https://media.discordapp.net/attachments/920372443544162365/999305101653049474/unknown.png?width=929&height=936)
+
