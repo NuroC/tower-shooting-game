@@ -20,7 +20,6 @@ for (let i = 0; i < maxTanks; i++) {
     let x = Math.floor(Math.random() * canvas.getWidth());
     let y = Math.floor(Math.random() * canvas.getHeight());
     let enemy = new Enemy(x, y);
-    // check all current enemies to see if they are too close to the new enemy
     for (let j = 0; j < enemies.length; j++) {
         if (CircleCircle(enemies[j].x, enemies[j].y, enemies[j].radius, x, y, 20)) {
             i--;
